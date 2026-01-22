@@ -3,6 +3,7 @@ const translations = {
         // Menu buttons
         collapse: "Collapse",
         expand: "Expand",
+        filters: "Filters",
         all: "All",
         general: "General",
         navigation: "Navigation",
@@ -106,6 +107,7 @@ const translations = {
         // Menu buttons
         collapse: "Réduire",
         expand: "Déplier",
+        filters: "Filtres",
         all: "Tout",
         general: "Général",
         navigation: "Navigation",

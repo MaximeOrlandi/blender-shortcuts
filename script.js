@@ -70,6 +70,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
     }
     
+    // Mobile menu toggle
+    const menuToggle = document.getElementById("menuToggle");
+    const filterMenu = document.getElementById("filter");
+    const menu = document.getElementById("menu");
+    
+    if (menuToggle) {
+        menuToggle.addEventListener("click", () => {
+            filterMenu.classList.toggle("open");
+            menuToggle.classList.toggle("open");
+            menu.classList.toggle("menuExpanded");
+        });
+    }
+    
     readURLAnchor();
     changeLanguage(currentLanguage);
 });
