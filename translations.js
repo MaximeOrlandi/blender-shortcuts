@@ -84,7 +84,23 @@ const translations = {
         "Ngons": "Ngons",
         "Grid Fill": "Grid Fill",
         "Merge By Distance": "Merge By Distance",
-        "Sliders": "Sliders"
+        "Sliders": "Sliders",
+        
+        // Keyboard shortcuts
+        "Middle Mouse": "Middle Mouse",
+        "Mouse Wheel": "Mouse Wheel",
+        "Left Mouse": "Left Mouse",
+        "Right Mouse": "Right Mouse",
+        "Shift": "Shift",
+        "Ctrl": "Ctrl",
+        "Alt": "Alt",
+        "Tab": "Tab",
+        "Numpad": "Numpad",
+        "Num": "Num",
+        "ESC": "ESC",
+        "Enter": "Enter",
+        "Arrow Up": "Arrow Up",
+        "Arrow Down": "Arrow Down"
     },
     fr: {
         // Menu buttons
@@ -171,6 +187,22 @@ const translations = {
         "Ngons": "Ngones",
         "Grid Fill": "Remplissage grille",
         "Merge By Distance": "Fusionner par distance",
-        "Sliders": "Curseurs"
+        "Sliders": "Curseurs",
+        
+        // Keyboard shortcuts
+        "Middle Mouse": "Molette centrale",
+        "Mouse Wheel": "Molette",
+        "Left Mouse": "Clic gauche",
+        "Right Mouse": "Clic droit",
+        "Shift": "Maj",
+        "Ctrl": "Ctrl",
+        "Alt": "Alt",
+        "Tab": "Tab",
+        "Numpad": "Pavé num",
+        "Num": "Num",
+        "ESC": "Échap",
+        "Enter": "Entrée",
+        "Arrow Up": "Flèche haut",
+        "Arrow Down": "Flèche bas"
     }
 };

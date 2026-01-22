@@ -192,6 +192,18 @@ function changeLanguage(lang) {
         }
     });
     
+    // Translate keyboard shortcuts
+    const shortcutElements = document.querySelectorAll('.shortcut');
+    shortcutElements.forEach(elem => {
+        if (!elem.dataset.originalText) {
+            elem.dataset.originalText = elem.textContent.trim();
+        }
+        const originalText = elem.dataset.originalText;
+        if (translations[lang] && translations[lang][originalText]) {
+            elem.textContent = translations[lang][originalText];
+        }
+    });
+    
     // Translate content paragraphs
     itemElements.forEach(item => {
         const itemId = item.id;
