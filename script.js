@@ -15,6 +15,7 @@ const itemCollapse = [];
 let isContent = false;
 let isTag = false;
 let highlighted = 0;
+let currentLanguage = localStorage.getItem('language') || 'en';
 
 document.addEventListener("DOMContentLoaded", (event) => {
     buttonContent.addEventListener("click", () => { toggleAllContent() });
@@ -44,7 +45,33 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
         itemTags.push(arr);
     }
+    
+    // Language selector
+    const currentLangButton = document.getElementById("currentLang");
+    const langDropdown = document.getElementById("langDropdown");
+    const langOptions = document.getElementsByClassName("langOption");
+    
+    currentLangButton.addEventListener("click", () => {
+        langDropdown.classList.toggle("hidden");
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest("#languageSelector")) {
+            langDropdown.classList.add("hidden");
+        }
+    });
+    
+    for (let i = 0; i < langOptions.length; i++) {
+        langOptions[i].addEventListener("click", () => {
+            const lang = langOptions[i].dataset.lang;
+            changeLanguage(lang);
+            langDropdown.classList.add("hidden");
+        });
+    }
+    
     readURLAnchor();
+    changeLanguage(currentLanguage);
 });
 
 function expandContent(index) {
@@ -69,7 +96,7 @@ function toggleAllContent() {
     if (header) {
         header.classList.toggle("hidden");
     }
-    buttonContent.innerHTML = (isContent) ? "Expand" : "Collapse";
+    buttonContent.textContent = isContent ? translations[currentLanguage]['expand'] : translations[currentLanguage]['collapse'];
 }
 
 function filterByTag(index) {
@@ -116,3 +143,80 @@ function highlight(index){
     highlighted = index;
 }
 
+function changeLanguage(lang) {
+    currentLanguage = lang;
+    localStorage.setItem('language', lang);
+    
+    // Update flag icon
+    const currentFlag = document.getElementById("currentFlag");
+    currentFlag.src = lang === 'en' ? 'img/EN.png' : 'img/FR.png';
+    currentFlag.alt = lang.toUpperCase();
+    
+    // Update HTML lang attribute
+    document.documentElement.lang = lang;
+    
+    // Translate all elements with data-i18n attribute
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
+        }
+    });
+    
+    // Translate all shortcut titles (h3:first-child in items)
+    const itemElements = document.querySelectorAll('.item');
+    itemElements.forEach(item => {
+        const titleElement = item.querySelector('.itemLink h3:first-child');
+        if (titleElement) {
+            // Store original English text if not already stored
+            if (!titleElement.dataset.originalText) {
+                titleElement.dataset.originalText = titleElement.textContent.trim();
+            }
+            const originalText = titleElement.dataset.originalText;
+            if (translations[lang] && translations[lang][originalText]) {
+                titleElement.textContent = translations[lang][originalText];
+            }
+        }
+    });
+    
+    // Translate keywords in content (important tags)
+    const importantElements = document.querySelectorAll('.important');
+    importantElements.forEach(elem => {
+        if (!elem.dataset.originalText) {
+            elem.dataset.originalText = elem.textContent.trim();
+        }
+        const originalText = elem.dataset.originalText;
+        if (translations[lang] && translations[lang][originalText]) {
+            elem.textContent = translations[lang][originalText];
+        }
+    });
+    
+    // Translate content paragraphs
+    itemElements.forEach(item => {
+        const itemId = item.id;
+        const contentKey = contentIdMapping[itemId];
+        
+        if (contentKey && contentTranslations[lang] && contentTranslations[lang][contentKey]) {
+            const contentDiv = item.querySelector('.content ul');
+            if (contentDiv) {
+                const listItems = contentDiv.querySelectorAll('li');
+                const translations = contentTranslations[lang][contentKey];
+                
+                listItems.forEach((li, index) => {
+                    if (translations[index]) {
+                        const p = li.querySelector('p');
+                        if (p) {
+                            p.innerHTML = translations[index];
+                        }
+                    }
+                });
+            }
+        }
+    });
+    
+    // Update button content text if needed
+    if (buttonContent) {
+        buttonContent.textContent = isContent ? translations[lang]['expand'] : translations[lang]['collapse'];
+    }
+}

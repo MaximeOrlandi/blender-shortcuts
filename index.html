@@ -13,6 +13,8 @@
     <meta property="og:type" content="website" />
 
     <link rel="stylesheet" type="text/css" href="screen.css" media="screen">
+    <script src="translations.js"></script>
+    <script src="content-translations.js"></script>
     <script src="script.js" defer></script>
 </head>
 
@@ -1583,15 +1585,28 @@
     </div>
 
     <div id="menu">
-        <button type="button" id="buttonContent">Collapse</button>
+        <button type="button" id="buttonContent" data-i18n="collapse">Collapse</button>
         <div id="filter">
-            <button type="button" class="buttonTag active" data-index="0">All</button>
-            <button type="button" class="buttonTag" data-index="1">General</button>
-            <button type="button" class="buttonTag" data-index="2">Navigation</button>
-            <button type="button" class="buttonTag" data-index="3">Selection</button>
-            <button type="button" class="buttonTag" data-index="4">Modeling</button>
-            <button type="button" class="buttonTag" data-index="5">Beginner</button>
-            <button type="button" class="buttonTag" data-index="6">Wizard</button>
+            <button type="button" class="buttonTag active" data-index="0" data-i18n="all">All</button>
+            <button type="button" class="buttonTag" data-index="1" data-i18n="general">General</button>
+            <button type="button" class="buttonTag" data-index="2" data-i18n="navigation">Navigation</button>
+            <button type="button" class="buttonTag" data-index="3" data-i18n="selection">Selection</button>
+            <button type="button" class="buttonTag" data-index="4" data-i18n="modeling">Modeling</button>
+            <button type="button" class="buttonTag" data-index="5" data-i18n="beginner">Beginner</button>
+            <button type="button" class="buttonTag" data-index="6" data-i18n="wizard">Wizard</button>
+        </div>
+        <div id="languageSelector">
+            <button type="button" id="currentLang" class="langButton">
+                <img src="img/EN.png" alt="EN" class="flag-icon" id="currentFlag">
+            </button>
+            <div id="langDropdown" class="hidden">
+                <button type="button" class="langOption" data-lang="en">
+                    <img src="img/EN.png" alt="EN" class="flag-icon"> English
+                </button>
+                <button type="button" class="langOption" data-lang="fr">
+                    <img src="img/FR.png" alt="FR" class="flag-icon"> Français
+                </button>
+            </div>
         </div>
     </div>
 
