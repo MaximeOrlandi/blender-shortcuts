@@ -2,7 +2,6 @@ const tagColors = [ "rgba(8,8,8,0.5)", "rgba(204,130,115,0.4)", "rgba(226,170,12
         
 const header = document.getElementById("header");
 const filter = document.getElementById("filter");
-const buttonMenu = document.getElementById("buttonMenu");
 const buttonContent = document.getElementById("buttonContent");
 const tagButtons = document.getElementsByClassName("buttonTag");
 const items = document.getElementsByClassName("item");
@@ -13,13 +12,11 @@ const itemLinks = [];
 const itemAnchors = [];
 const itemCollapse = [];
 
-let isMenu = false;
 let isContent = false;
 let isTag = false;
 let highlighted = 0;
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    buttonMenu.addEventListener("click", () => { toggleMenu() });     
     buttonContent.addEventListener("click", () => { toggleAllContent() });
 
     for (let i = 0; i < tagButtons.length; i++) {
@@ -47,20 +44,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
         itemTags.push(arr);
     }
-    buttonMenu.classList.toggle("hidden");
     readURLAnchor();
 });
-
-function toggleMenu() {
-    isMenu = !isMenu;
-    buttonContent.classList.toggle("hidden");
-
-    if (!isMenu) {
-        filter.classList.add("hidden");
-    } else {
-        filter.classList.remove("hidden");
-    }
-}
 
 function expandContent(index) {
     itemContents[index].classList.remove("hidden");
@@ -81,7 +66,9 @@ function toggleAllContent() {
             itemContents[i].classList.remove("hidden");
         }
     }
-    header.classList.toggle("hidden");
+    if (header) {
+        header.classList.toggle("hidden");
+    }
     buttonContent.innerHTML = (isContent) ? "Expand" : "Collapse";
 }
 

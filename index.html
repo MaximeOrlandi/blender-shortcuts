@@ -10,8 +10,6 @@
 
     <meta property="og:title" content="Blender Shortcuts" />
     <meta property="og:description" content="A selection of useful default shortcuts in Blender" />
-    <meta property="og:image" content="https://hollisbrown.github.io/blendershortcuts/img/thumbnail.jpg" />
-    <meta property="og:url" content="https://hollisbrown.github.io/blendershortcuts/" />
     <meta property="og:type" content="website" />
 
     <link rel="stylesheet" type="text/css" href="screen.css" media="screen">
@@ -19,12 +17,6 @@
 </head>
 
 <body>
-    <div id="header">
-        <h1>Blender Shortcuts</h1>
-        <p>This website provides a selection of useful default shortcuts in <a href="https://www.blender.org/" target="_blank">Blender</a>. For the best user experience, a mouse with a <em class="important">wheel</em> and a keyboard with a <em class="important">numpad</em> are recommended.</p>
-        <p>Suggest changes to this website via <a href="https://github.com/hollisbrown/blendershortcuts/" target="_blank">Github</a>.</p>
-    </div>
-
     <div class="main">
         <div class="item" id="ChangeView">
             <a class="itemLink" href="#ChangeView">
@@ -1591,10 +1583,8 @@
     </div>
 
     <div id="menu">
-        <button type="button" id="buttonMenu" class="hidden">&#9776;</button>
-        <button type="button" id="buttonContent" class="hidden">Collapse</button>
-        <!-- <button type="button" id="buttonFilter" class="hidden">Tags</button> -->
-        <div id="filter" class="hidden">
+        <button type="button" id="buttonContent">Collapse</button>
+        <div id="filter">
             <button type="button" class="buttonTag active" data-index="0">All</button>
             <button type="button" class="buttonTag" data-index="1">General</button>
             <button type="button" class="buttonTag" data-index="2">Navigation</button>
@@ -1604,6 +1594,10 @@
             <button type="button" class="buttonTag" data-index="6">Wizard</button>
         </div>
     </div>
+
+    <footer id="credits">
+        <p>Credits <a href="https://github.com/hollisbrown" target="_blank" rel="noopener noreferrer">hollisbrown</a></p>
+    </footer>
 </body>
 
 </html>

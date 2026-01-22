@@ -80,6 +80,7 @@
         gap: 20px;
         grid-template-columns: repeat(auto-fill, 320px);
         padding: 20px;
+        padding-top: 100px;
         padding-bottom: 120px;
     }
 
@@ -176,22 +177,26 @@
     #menu {
         position: fixed;
         top: 0;
+        left: 0;
         right: 0;
-        padding: 20px;
+        width: 100%;
+        padding: 15px 20px;
         display: flex;
-        flex-direction:column;
-        align-items:flex-end;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
         gap: 10px;
+        background-color: rgba(16, 16, 16, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
 
         user-select: none;
     }
 
     #menu button {
-        width: 128px;
-        height: 56px;
-        padding: 10px;
-        padding-left: 15px;
-        padding-right: 15px;
+        height: 40px;
+        padding: 8px 15px;
 
         font-size: 70%;
         text-transform: uppercase;
@@ -202,21 +207,25 @@
         background-color: rgba(2, 2, 2, 1);
         border: none;
         white-space: nowrap;
+        cursor: pointer;
     }
 
     #menu button:hover {
         filter: brightness(200%);
     }
-
-    #menu #buttonMenu {
-        width: 56px;
+    
+    #menu #buttonContent {
+        margin-right: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     #filter {
         display: flex;
-        flex-direction: column;
-        flex-wrap: wrap-reverse;
+        flex-direction: row;
+        flex-wrap: wrap;
         gap: 10px;
+        align-items: center;
     }
 
     #filter button {
@@ -246,12 +255,50 @@
         border: 1px solid rgb(255, 170, 64); 
     }
 
+    #credits {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: rgb(16, 16, 16);
+    }
+
+    #credits p {
+        font-size: 85%;
+        color: rgb(100, 100, 100);
+        margin: 0;
+    }
+
+    #credits a {
+        color: rgb(140, 140, 140);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    #credits a:hover {
+        color: rgb(200, 200, 200);
+        text-decoration: underline;
+    }
+
     @media screen and (max-width: 720px) {
         .main {
             grid-template-columns: repeat(auto-fill, 100%);
+            padding-top: 200px;
         }
 
         .item video {
+            width: 100%;
+        }
+        
+        #menu {
+            flex-direction: column;
+            padding: 15px;
+        }
+        
+        #filter {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        #filter button {
             width: 100%;
         }
     }
